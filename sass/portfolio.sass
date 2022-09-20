@@ -7,6 +7,7 @@ $phone-columns-num: 2
 $section-padding: 0.1rem
 $tablet-width: 1280px
 $tablet-columns-num: 4
+$gallary-columns-num-max: 5
 
 :root
     font-size: 1rem
@@ -67,7 +68,7 @@ ul
     justify-content: center
     align-items: center
     background-color: aquamarine
-    background-image: url(../images/15.jpg)
+    background-image: url(../images/title.jpg)
     background-position: center center
     background-repeat: no-repeat
     background-size: cover
@@ -86,8 +87,31 @@ ul
 
 .gallary
     display: grid
-    grid-template-columns: repeat(5, 1fr)
-    gap: $gallary-gap
+    grid-template-columns: repeat($gallary-columns-num-max, minmax(200px, 1fr))
+    grid-auto-rows: calc(100vw/$gallary-columns-num-max)
+    grid-gap: $gallary-gap
+
+.photo
+    min-width: 100px
+    min-height: 100px
+    background-color: green
+    overflow: hidden
+    img
+        object-fit: cover
+        width: 100%
+        height: 100%
+
+.photo-2x2
+    grid-column: span 2
+    grid-row: span 2
+
+.photo-3x2
+    grid-column: span 3
+    grid-row: span 2
+
+.photo-2x3
+    grid-column: span 2
+    grid-row: span 3
 
 nav
     width: 100%
@@ -117,17 +141,6 @@ nav a
     text-transform: uppercase
     letter-spacing: 0.3em
 
-.photo
-    min-width: 100px
-    min-height: 100px
-    height: 20vw
-    background-color: green
-    overflow: hidden
-    img
-        object-fit: cover
-        width: 100%
-        height: 100%
-
 .background-black
     color: #fff
     background: rgba(0,0,0,0.8)
@@ -136,9 +149,14 @@ nav a
     color: #111
     background-color: white
 
-
 .hidden
     display: none
+
+.hide-on-tablet
+    display: initial
+
+.hide-on-phone
+    display: initial
 
 @media screen and (max-width: $tablet-width)
     h1
@@ -149,10 +167,10 @@ nav a
 
     .gallary
         grid-template-columns: repeat($tablet-columns-num, 1fr)
+        grid-auto-rows: calc(100vw / $tablet-columns-num)
 
-    .photo
-        height: calc(100vw / $tablet-columns-num)
-
+    .hide-on-tablet
+        display: none
 
 @media screen and (max-width: $phone-width)
     h1
@@ -167,10 +185,25 @@ nav a
 
     .gallary
         grid-template-columns: repeat($phone-columns-num, 1fr)
+        grid-auto-rows: calc(100vw / $phone-columns-num)
 
-    .photo
-        height: calc(100vw / $phone-columns-num)
+    .photo-2x2
+        grid-row: span 1
+        grid-column: span 1
 
+    .photo-2x3
+        grid-row: span 1
+        grid-column: span 1
+
+    .photo-3x2
+        grid-row: span 1
+        grid-column: span 1
+
+    .hide-on-tablet
+        display: initial
+
+    .hide-on-phone
+        display: none
 
 @media screen and (max-width: $old-phone-width)
     h1
@@ -185,6 +218,11 @@ nav a
 
     .gallary
         grid-template-columns: $old-phone-columns-num * 1fr
+        grid-auto-rows: calc(100vw/$old-phone-columns-num)
 
-    .photo
-        height: calc(100vw / $old-phone-columns-num)
+    .hide-on-tablet
+        display: initial
+
+    .hide-on-phone
+        display: initial
+
