@@ -8,6 +8,9 @@ $section-padding: 0.1rem
 $tablet-width: 1280px
 $tablet-columns-num: 4
 $gallary-columns-num-max: 5
+$slider-arrow-width: 100px
+$slider-arrow-height: 150px
+$slider-croos_size: 30px
 
 :root
     font-size: 1rem
@@ -28,14 +31,11 @@ body
 article
     display: block
     
-.text
-    // background-image: url(../images/pattern.jpg)
-
 section
     display: block
     font-size: 1rem
     color: #fff
-    overflow: auto
+    overflow: hidden
     padding: $section-padding
 
 h1
@@ -91,7 +91,7 @@ ul
     grid-auto-rows: calc(100vw/$gallary-columns-num-max)
     grid-gap: $gallary-gap
 
-.photo
+.gallary__photo
     min-width: 100px
     min-height: 100px
     background-color: green
@@ -101,17 +101,73 @@ ul
         width: 100%
         height: 100%
 
-.photo-2x2
+.gallary__photo_2x2
     grid-column: span 2
     grid-row: span 2
 
-.photo-3x2
+.gallary__photo_3x2
     grid-column: span 3
     grid-row: span 2
 
-.photo-2x3
+.gallary__photo_2x3
     grid-column: span 2
     grid-row: span 3
+
+.slider
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 10
+    width: 100%
+    height: 100%
+
+.slider__background
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.5)
+
+.slider__screen
+    position: absolute
+    top: 50%
+    left: 50%
+    width: auto
+    max-width: calc(100% - 2 * (2em + $slider-arrow-width))
+    height: auto
+    max-height: calc(100vh - 100px)
+    transform: translate(-50%, -50%)
+    object-fit: cover
+    border-radius: 10px
+
+.slider__button
+    position: absolute
+    background-color: rgba(0, 0, 0, 0)
+    filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%)
+    cursor: pointer
+
+.slider__button_arrow
+    top: 50%
+    transform: translateY(-50%)
+    img
+        height: $slider-arrow-height
+        width: $slider-arrow-width
+
+.slider__button_arrow-left
+    left: 1em
+
+.slider__button_arrow-right
+    right: 1em
+    img
+        transform: scaleX(-100%)
+
+.slider__button_close
+    top: 2em
+    right: 2em
+    img
+        width:$slider-croos_size
+        height: $slider-croos_size
 
 nav
     width: 100%
@@ -187,15 +243,15 @@ nav a
         grid-template-columns: repeat($phone-columns-num, 1fr)
         grid-auto-rows: calc(100vw / $phone-columns-num)
 
-    .photo-2x2
+    .gallary__photo_2x2
         grid-row: span 1
         grid-column: span 1
 
-    .photo-2x3
+    .gallary__photo_2x3
         grid-row: span 1
         grid-column: span 1
 
-    .photo-3x2
+    .gallary__photo_3x2
         grid-row: span 1
         grid-column: span 1
 
@@ -225,4 +281,3 @@ nav a
 
     .hide-on-phone
         display: initial
-
