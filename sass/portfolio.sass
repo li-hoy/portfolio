@@ -1,19 +1,19 @@
 $gallary-gap: 1px
-$old-phone-width: 480px
 $old-phone-columns-num: 1
-$page-min-width: 320px
-$phone-width: 900px
+$old-phone-width: 30em
+$phone-width: 60em
+$tablet-width: 80em
+$page-min-width: 20em
 $phone-columns-num: 2
 $section-padding: 0.1rem
-$tablet-width: 1280px
 $tablet-columns-num: 4
 $gallary-columns-num-max: 5
-$slider-arrow-width: 80px
-$slider-arrow-height: 120px
-$slider-croos_size: 30px
+$slider-arrow-width: 50px
+$slider-arrow-height: 100px
+$slider-cross_size: 30px
 
 :root
-    font-size: 1rem
+    font-size: 16px
     font-family: sans-serif
     box-sizing: border-box
 
@@ -30,7 +30,12 @@ body
 
 article
     display: block
-    
+    padding-left: 0.2em
+    padding-right: 0.2em
+
+footer
+    width: 100%
+
 section
     display: block
     font-size: 1rem
@@ -48,6 +53,7 @@ h2
 h3
     font-size: 1.6rem
     margin: 1em 0 0.5em
+    padding: 0.2em
 
 h4
     font-size: 1.2rem
@@ -88,7 +94,7 @@ ul
 .gallary
     display: grid
     grid-template-columns: repeat($gallary-columns-num-max, minmax(200px, 1fr))
-    grid-auto-rows: calc(100vw/$gallary-columns-num-max)
+    grid-auto-rows: calc(100vw / $gallary-columns-num-max)
     grid-gap: $gallary-gap
 
 .gallary__photo
@@ -135,7 +141,7 @@ ul
     width: auto
     max-width: calc(100% - 2 * (2em + $slider-arrow-width))
     height: auto
-    max-height: 90vh
+    max-height: 98vh
     transform: translate(-50%, -50%)
     object-fit: cover
 
@@ -144,6 +150,10 @@ ul
     background-color: rgba(0, 0, 0, 0)
     filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%)
     cursor: pointer
+    border-radius: 10px
+
+.slider__button:hover
+    background-color: rgba(0, 0, 0, 0.1)
 
 .slider__button_arrow
     top: 50%
@@ -151,6 +161,8 @@ ul
     img
         height: $slider-arrow-height
         width: $slider-arrow-width
+        margin: 60px 30px
+
 
 .slider__button_arrow-left
     left: 1em
@@ -164,14 +176,15 @@ ul
     top: 2em
     right: 2em
     img
-        width:$slider-croos_size
-        height: $slider-croos_size
+        width: $slider-cross_size
+        height: $slider-cross_size
 
 nav
     width: 100%
 
-header nav
+nav.main
     position: fixed
+    top: 0
     color: #fff
     width: 100%
     min-width: $page-min-width
@@ -271,11 +284,18 @@ nav a
         top: 50%
         transform: translateY(-50%)
         img
-            height: ($slider-arrow-height / 2)
-            width: ($slider-arrow-width / 2)
+            height: calc($slider-arrow-height / 2)
+            width: calc($slider-arrow-width / 2)
+            margin: 20px 10px
 
+    .slider__button_close
+        top: 1.5em
+        right: 1.5em
+        img
+            width: calc($slider-cross_size / 1.2)
+            height: calc($slider-cross_size / 1.2)
 
-
+    
 @media screen and (max-width: $old-phone-width)
     h1
         font-size: 1.6rem
@@ -289,7 +309,7 @@ nav a
 
     .gallary
         grid-template-columns: $old-phone-columns-num * 1fr
-        grid-auto-rows: calc(100vw/$old-phone-columns-num)
+        grid-auto-rows: calc(100vw / $old-phone-columns-num)
 
     .hide-on-tablet
         display: initial

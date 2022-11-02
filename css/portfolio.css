@@ -1,5 +1,5 @@
 :root {
-  font-size: 1rem;
+  font-size: 16px;
   font-family: sans-serif;
   box-sizing: border-box;
 }
@@ -14,11 +14,17 @@
 
 body {
   background-color: #000;
-  min-width: 320px;
+  min-width: 20em;
 }
 
 article {
   display: block;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+
+footer {
+  width: 100%;
 }
 
 section {
@@ -41,6 +47,7 @@ h2 {
 h3 {
   font-size: 1.6rem;
   margin: 1em 0 0.5em;
+  padding: 0.2em;
 }
 
 h4 {
@@ -144,9 +151,9 @@ ul {
   top: 50%;
   left: 50%;
   width: auto;
-  max-width: calc(100% - 2 * (2em + 80px));
+  max-width: calc(100% - 2 * (2em + 50px));
   height: auto;
-  max-height: 90vh;
+  max-height: 98vh;
   transform: translate(-50%, -50%);
   -o-object-fit: cover;
      object-fit: cover;
@@ -157,6 +164,11 @@ ul {
   background-color: rgba(0, 0, 0, 0);
   filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
   cursor: pointer;
+  border-radius: 10px;
+}
+
+.slider__button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .slider__button_arrow {
@@ -164,8 +176,9 @@ ul {
   transform: translateY(-50%);
 }
 .slider__button_arrow img {
-  height: 120px;
-  width: 80px;
+  height: 100px;
+  width: 50px;
+  margin: 60px 30px;
 }
 
 .slider__button_arrow-left {
@@ -192,11 +205,12 @@ nav {
   width: 100%;
 }
 
-header nav {
+nav.main {
   position: fixed;
+  top: 0;
   color: #fff;
   width: 100%;
-  min-width: 320px;
+  min-width: 20em;
 }
 
 nav ul {
@@ -257,7 +271,7 @@ nav a {
     display: none;
   }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 60em) {
   h1 {
     font-size: 2rem;
   }
@@ -305,11 +319,20 @@ nav a {
     transform: translateY(-50%);
   }
   .slider__button_arrow img {
-    height: 60px;
-    width: 40px;
+    height: 50px;
+    width: 25px;
+    margin: 20px 10px;
+  }
+  .slider__button_close {
+    top: 1.5em;
+    right: 1.5em;
+  }
+  .slider__button_close img {
+    width: 25px;
+    height: 25px;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 30em) {
   h1 {
     font-size: 1.6rem;
   }
