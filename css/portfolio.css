@@ -143,7 +143,7 @@ ul {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .slider__screen {
@@ -151,7 +151,7 @@ ul {
   top: 50%;
   left: 50%;
   width: auto;
-  max-width: calc(100% - 2 * (2em + 50px));
+  max-width: calc(100% - 2 * (2em + 30px));
   height: auto;
   max-height: 98vh;
   transform: translate(-50%, -50%);
@@ -160,15 +160,21 @@ ul {
 }
 
 .slider__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   background-color: rgba(0, 0, 0, 0);
   filter: invert(80%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 15px;
+}
+.slider__button img {
+  margin: 15px 15px;
 }
 
 .slider__button:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .slider__button_arrow {
@@ -176,9 +182,8 @@ ul {
   transform: translateY(-50%);
 }
 .slider__button_arrow img {
-  height: 100px;
-  width: 50px;
-  margin: 60px 30px;
+  height: 30px;
+  width: 30px;
 }
 
 .slider__button_arrow-left {
@@ -193,8 +198,8 @@ ul {
 }
 
 .slider__button_close {
-  top: 2em;
-  right: 2em;
+  top: 1em;
+  right: 1em;
 }
 .slider__button_close img {
   width: 30px;
@@ -224,7 +229,7 @@ nav ul {
 nav li {
   display: inline-block;
   padding: 20px 50px;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 nav a {
@@ -256,12 +261,13 @@ nav a {
   display: initial;
 }
 
-@media screen and (max-width: 1280px) {
-  h1 {
-    font-size: 4rem;
+@media screen and (max-width: 80em) {
+  :root {
+    font-size: calc(1vw + 0.1em);
   }
-  h2 {
-    font-size: 2rem;
+  nav li {
+    padding: 15px 30px;
+    font-size: 1.5em;
   }
   .gallary {
     grid-template-columns: repeat(4, 1fr);
@@ -272,15 +278,9 @@ nav a {
   }
 }
 @media screen and (max-width: 60em) {
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1rem;
-  }
   nav li {
-    padding: 15px 30px;
-    font-size: 0.8em;
+    padding: 10px 15px;
+    font-size: 2em;
   }
   .gallary {
     grid-template-columns: repeat(2, 1fr);
@@ -319,8 +319,8 @@ nav a {
     transform: translateY(-50%);
   }
   .slider__button_arrow img {
-    height: 50px;
-    width: 25px;
+    height: 15px;
+    width: 15px;
     margin: 20px 10px;
   }
   .slider__button_close {
@@ -334,14 +334,10 @@ nav a {
 }
 @media screen and (max-width: 30em) {
   h1 {
-    font-size: 1.6rem;
+    font-size: 4rem;
   }
   h2 {
-    font-size: 0.8rem;
-  }
-  nav li {
-    padding: 10px 15px;
-    font-size: 0.6em;
+    font-size: 2rem;
   }
   .gallary {
     grid-template-columns: 1fr;
